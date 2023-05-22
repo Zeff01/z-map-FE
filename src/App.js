@@ -128,50 +128,51 @@ function App() {
       >
         <ToastContainer position="top-left" theme="dark" />
         <NavigationControl />
-        {pins.map((p) => (
-          <>
-            <Marker longitude={p.long} latitude={p.lat} anchor="center">
-              <FmdGoodIcon
-                className="icon"
-                onClick={() => handleMarkerClicked(p._id, p.lat, p.long)}
-                style={{
-                  fontSize: viewPort.zoom * 2,
-                  color: p.userName === currentUser ? "tomato" : "slateblue",
-                }}
-              />
-            </Marker>
+        {pins &&
+          pins.map((p) => (
+            <>
+              <Marker longitude={p.long} latitude={p.lat} anchor="center">
+                <FmdGoodIcon
+                  className="icon"
+                  onClick={() => handleMarkerClicked(p._id, p.lat, p.long)}
+                  style={{
+                    fontSize: viewPort.zoom * 2,
+                    color: p.userName === currentUser ? "tomato" : "slateblue",
+                  }}
+                />
+              </Marker>
 
-            {p._id === currentPlaceId && (
-              <Popup
-                longitude={p.long}
-                latitude={p.lat}
-                closeOnClick={false}
-                closeOnMove={false}
-                onClose={() => setCurrentPlaceId(null)}
-                anchor="left"
-                className="popup"
-              >
-                <div className="card">
-                  <label>Place</label>
-                  <h4 className="place">{p.title}</h4>
-                  <label>Review</label>
-                  <p className="descr">{p.descr}</p>
-                  <label>Rating</label>
-                  <div className="stars">
-                    {Array(p.rating).fill(<StarIcon className="star" />)}
+              {p._id === currentPlaceId && (
+                <Popup
+                  longitude={p.long}
+                  latitude={p.lat}
+                  closeOnClick={false}
+                  closeOnMove={false}
+                  onClose={() => setCurrentPlaceId(null)}
+                  anchor="left"
+                  className="popup"
+                >
+                  <div className="card">
+                    <label>Place</label>
+                    <h4 className="place">{p.title}</h4>
+                    <label>Review</label>
+                    <p className="descr">{p.descr}</p>
+                    <label>Rating</label>
+                    <div className="stars">
+                      {Array(p.rating).fill(<StarIcon className="star" />)}
+                    </div>
+                    <label>Information</label>
+                    <div className="info">
+                      <span className="username">
+                        Created by <b>{p.userName}</b>
+                      </span>
+                      <span className="date">{format(p.createdAt)}</span>
+                    </div>
                   </div>
-                  <label>Information</label>
-                  <div className="info">
-                    <span className="username">
-                      Created by <b>{p.userName}</b>
-                    </span>
-                    <span className="date">{format(p.createdAt)}</span>
-                  </div>
-                </div>
-              </Popup>
-            )}
-          </>
-        ))}
+                </Popup>
+              )}
+            </>
+          ))}
         {newPlace && (
           <Popup
             longitude={newPlace.lng}
