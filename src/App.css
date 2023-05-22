@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.popup {
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.mapboxgl-popup-close-button {
+  margin-right: 10px;
+  font-size: 30px;
+}
+
+.mapboxgl-popup-content {
+  padding: 20px;
+  background-color: black;
+  border-radius: 25px !important;
+}
+.mapboxgl-popup-content-wrapper {
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.card {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  background-color: transparent;
+}
+label {
+  font-size: 20px;
+  color: rgb(3, 83, 255) !important;
+}
+.icon {
+  cursor: pointer;
+}
+.place {
+  font-size: 14px;
+}
+
+label {
+  color: blue;
+  font-size: 13px;
+  border-bottom: 1.5px solid darkblue;
+}
+
+.descr {
+  font-size: 12px;
+}
+
+.star {
+  color: goldenrod;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: gray;
+  margin-top: 10px;
+}
+
+form {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+}
+
+input,
+textarea {
+  border: none;
+  border-bottom: 1px solid gray;
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 12px;
+  color: lightgray;
+}
+
+.submitButton {
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+  color: white;
+  background-color: rgb(253, 123, 100);
+}
+
+.submitButton:hover {
+  background-color: tomato;
+  cursor: pointer;
+}
+
+.footer {
+  position: absolute;
+  display: flex;
+  padding: 10px;
+  flex-direction: row;
+  height: auto;
+  width: 100vw;
+  background-color: rgb(16, 29, 49);
+  z-index: 100;
+  bottom: 0;
+  justify-content: center;
+}
+
+.footer:hover {
+  cursor: pointer;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.1) -6px -2px 16px 0px;
+}
+
+.button {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  margin-right: 15px;
+  padding: 10px;
+}
+
+.logout {
+  background-color: tomato;
+  padding: 10px;
+}
+.login {
+  background-color: teal;
+  padding: 10px;
+}
+
+.register {
+  background-color: blue;
+}
+
+.register:hover {
+  background-color: darkblue;
+}
+
+.login:hover {
+  background-color: rgb(0, 76, 76);
+}
+.logout:hover {
+  background-color: rgb(255, 68, 35);
+}
