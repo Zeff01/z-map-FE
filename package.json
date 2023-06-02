@@ -50,7 +50,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://z-map-be.onrender.com/api",
   "devDependencies": {
     "@babel/core": "^7.22.1",
     "@babel/preset-env": "^7.22.4",
