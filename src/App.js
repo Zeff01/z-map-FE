@@ -6,13 +6,17 @@ import { useState } from "react";
 import StarIcon from "@mui/icons-material/Star";
 import axios from "axios";
 import { format } from "timeago.js";
-import { NavigationControl } from "react-map-gl";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import ReactMapGL, { FlyToInterpolator, NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Register from "./Components/Register/Register";
 import Login from "./Components/Login/Login";
+import mapboxgl from "mapbox-gl";
+
+mapboxgl.workerClass =
+  require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 const pinAddSuccess = () => {
   toast.success("Added pin!");
