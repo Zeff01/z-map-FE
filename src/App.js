@@ -34,19 +34,12 @@ function App() {
 
   const [pins, setPins] = useState([]);
   const [newPlace, setNewPlace] = useState(null);
-
   const [title, setTitle] = useState(null);
   const [descr, setDescr] = useState(null);
   const [rating, setRating] = useState(1);
-
+  const [showRegister, setShowRegister] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-
-  const viewPort = {
-    longitude: 14.4,
-    latitude: 121.8,
-    zoom: 5,
-  };
-
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
 
   React.useEffect(() => {
@@ -116,15 +109,23 @@ function App() {
     setCurrentUser(null);
   };
 
-  const [showRegister, setShowRegister] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
-
+  const viewPort = {
+    longitude: 121.110528,
+    latitude: 14.548992,
+    zoom: 1,
+  };
   return (
     <div className="app">
       <Map
         container={"map"}
         projection={"globe"}
-        initialViewState={{ viewPort }}
+        initialViewState={{
+          latitude: 14.58351, // Replace with your desired latitude
+          longitude: 121.07483, // Replace with your desired longitude
+          zoom: 20, // Replace with your desired zoom level
+          bearing: 0, // Replace with your desired bearing (optional)
+          pitch: 0, // Replace with your desired pitch (optional)
+        }}
         mapboxAccessToken={process.env.REACT_APP_TOKEN}
         style={{ width: "100vw", height: "100vh" }}
         mapStyle="mapbox://styles/jzeff01/clhvr48iz00rn01poatjtbxks"
