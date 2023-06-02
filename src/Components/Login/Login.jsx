@@ -27,7 +27,10 @@ export default function Login({ setShowLogin, myStorage, setCurrentUser }) {
     };
 
     try {
-      const responce = await axios.post("/users/login", newUser);
+      const responce = await axios.post(
+        "https://z-map-be.onrender.com/users/login",
+        newUser
+      );
       userRegisterSuccess();
       console.log(responce);
       myStorage.setItem("user", responce.data.userName);

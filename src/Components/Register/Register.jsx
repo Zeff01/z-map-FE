@@ -29,7 +29,10 @@ export default function Register({ setShowRegister }) {
     };
 
     try {
-      const responce = await axios.post("/users/register", newUser);
+      const responce = await axios.post(
+        "https://z-map-be.onrender.com/users/register",
+        newUser
+      );
       userRegisterSuccess();
       setShowRegister(false);
     } catch (err) {
