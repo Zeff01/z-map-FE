@@ -52,7 +52,9 @@ function App() {
   React.useEffect(() => {
     const getPins = async () => {
       try {
-        const responce = await axios.get("/pins");
+        const responce = await axios.get(
+          "https://z-map-be.onrender.com/api/pins"
+        );
         setPins(responce.data);
       } catch (err) {
         console.log(err);
@@ -91,7 +93,11 @@ function App() {
       if (!currentUser) {
         userNotLoggedIn();
       } else {
-        const response = await axios.post("/pins", newPin);
+        const response = await axios.post(
+          "https://z-map-be.onrender.com/api/pins",
+          newPin
+        );
+        console.log("response:", response);
         setPins([...pins, response.data]);
         setNewPlace(null);
         pinAddSuccess();
@@ -129,7 +135,7 @@ function App() {
         <NavigationControl />
         {pins &&
           pins.map((p) => (
-            <>
+            <div key={p._id}>
               <Marker longitude={p.long} latitude={p.lat} anchor="center">
                 <FmdGoodIcon
                   className="icon"
@@ -170,7 +176,7 @@ function App() {
                   </div>
                 </Popup>
               )}
-            </>
+            </div>
           ))}
         {newPlace && (
           <Popup
