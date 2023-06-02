@@ -122,7 +122,7 @@ function App() {
         initialViewState={{
           latitude: 14.58351, // Replace with your desired latitude
           longitude: 121.07483, // Replace with your desired longitude
-          zoom: 20, // Replace with your desired zoom level
+          zoom: 5, // Replace with your desired zoom level
           bearing: 0, // Replace with your desired bearing (optional)
           pitch: 0, // Replace with your desired pitch (optional)
         }}
