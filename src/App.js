@@ -9,14 +9,11 @@ import { format } from "timeago.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-import ReactMapGL, { FlyToInterpolator, NavigationControl } from "react-map-gl";
+import { NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Register from "./Components/Register/Register";
 import Login from "./Components/Login/Login";
-import mapboxgl from "!mapbox-gl";
-
-mapboxgl.workerClass =
-  require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
+import mapboxgl from "mapbox-gl";
 
 const pinAddSuccess = () => {
   toast.success("Added pin!");
