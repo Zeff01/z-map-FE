@@ -97,7 +97,6 @@ function App() {
           "https://z-map-be.onrender.com/api/pins",
           newPin
         );
-        console.log("response:", response);
         setPins([...pins, response.data]);
         setNewPlace(null);
         pinAddSuccess();
