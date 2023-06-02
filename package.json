@@ -1,6 +1,12 @@
 {
   "name": "travel-app",
   "version": "0.1.0",
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.0",
