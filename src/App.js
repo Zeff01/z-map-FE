@@ -41,11 +41,11 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState(null);
 
-  const [viewPort, setViewPort] = useState({
+  const viewPort = {
     longitude: 14.4,
     latitude: 121.8,
     zoom: 5,
-  });
+  };
 
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
 
