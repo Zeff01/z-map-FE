@@ -110,8 +110,8 @@ function App() {
   };
 
   const viewPort = {
-    longitude: 121.110528,
-    latitude: 14.548992,
+    latitude: 14.58351,
+    longitude: 121.07483,
     zoom: 1,
   };
   return (
