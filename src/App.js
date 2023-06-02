@@ -42,9 +42,9 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
   const [viewPort, setViewPort] = useState({
-    longitude: 12.4,
-    latitude: 37.8,
-    zoom: 14,
+    longitude: 14.4,
+    latitude: 121.8,
+    zoom: 5,
   });
 
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
@@ -86,7 +86,6 @@ function App() {
       lat: newPlace.lat,
       long: newPlace.lng,
     };
-    console.log("newPin:", newPin);
 
     try {
       if (!currentUser) {
