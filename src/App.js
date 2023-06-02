@@ -13,7 +13,6 @@ import { NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Register from "./Components/Register/Register";
 import Login from "./Components/Login/Login";
-import mapboxgl from "mapbox-gl";
 
 const pinAddSuccess = () => {
   toast.success("Added pin!");
