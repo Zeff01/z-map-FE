@@ -3,6 +3,7 @@ import Map, { Marker } from "react-map-gl";
 import { Popup } from "react-map-gl";
 import { useState } from "react";
 import StarIcon from "@mui/icons-material/Star";
+import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import axios from "axios";
 import { format } from "timeago.js";
 import { ToastContainer, toast } from "react-toastify";
@@ -12,8 +13,8 @@ import { NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Register from "./Components/Register/Register";
 import Login from "./Components/Login/Login";
-import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import { FiMapPin } from "react-icons/fi";
+import Rating from "react-rating";
 
 const pinAddSuccess = () => {
   toast.success("Added pin!");
@@ -160,23 +161,32 @@ function App() {
                     closeOnMove={false}
                     onClose={() => setCurrentPlaceId(null)}
                     anchor="left"
-                    className="popup"
+                    className="py-2  w-[550px]"
                   >
-                    <div className="card">
-                      <label>Place</label>
-                      <h4 className="place">{p.title}</h4>
-                      <label>Review</label>
-                      <p className="descr">{p.description}</p>
-                      <label>Rating</label>
-                      <div className="stars">
-                        {Array(p.rating).fill(<StarIcon className="star" />)}
+                    <div className="rounded-md px-2 m-2">
+                      <label className="text-gray-600">Place</label>
+                      <h4 className="place text-xl font-bold mb-2">
+                        {p.title}
+                      </h4>
+                      <label className="text-gray-600">Review</label>
+                      <p className="descr text-gray-800">{p.description}</p>
+                      <label className="text-gray-600">Rating</label>
+                      <div className="stars flex items-center mt-2">
+                        {Array.from({ length: p.rating }, (_, index) => (
+                          <StarIcon
+                            key={index}
+                            className="star text-yellow-500"
+                          />
+                        ))}
                       </div>
-                      <label>Information</label>
-                      <div className="info">
-                        <span className="username">
+                      <label className="text-gray-600">Information</label>
+                      <div className="info flex items-center mt-2">
+                        <span className="username font-bold text-gray-800">
                           Created by <b>{p.userName}</b>
                         </span>
-                        <span className="date">{format(p.createdAt)}</span>
+                        <span className="date text-gray-600 ml-2">
+                          {format(p.createdAt)}
+                        </span>
                       </div>
                     </div>
                   </Popup>
@@ -192,32 +202,44 @@ function App() {
             closeOnMove={false}
             onClose={() => setNewPlace(null)}
             anchor="left"
+            className="py-2 w-[550px] h-[350px]"
           >
-            <div>
-              <form onSubmit={handlePinSubmit}>
-                <label>Title</label>
+            <form
+              onSubmit={handlePinSubmit}
+              className="flex flex-col justify-between gap-6 m-2"
+            >
+              <div className="flex flex-col">
+                <label className="text-gray-600">Title</label>
                 <input
+                  className="bg-white rounded-md py-2 px-3 outline-none focus:bg-white focus:shadow-md"
                   placeholder="Enter a title..."
                   onChange={(e) => setTitle(e.target.value)}
                 />
-                <label>Review</label>
+              </div>
+              <div className="flex flex-col">
+                <label className="text-gray-600">Review</label>
                 <textarea
+                  className=" rounded-md py-2 px-3 outline-none focus:bg-white focus:shadow-md"
                   placeholder="Say something about this place..."
                   onChange={(e) => setDescr(e.target.value)}
                 />
-                <label>Rating</label>
-                <select onChange={(e) => setRating(e.target.value)}>
-                  <option value="1">1 </option>
-                  <option value="2">2 </option>
-                  <option value="3">3 </option>
-                  <option value="4">4 </option>
-                  <option value="5">5 </option>
-                </select>
-                <button className="submitButton" type="submit">
-                  Add Pin
-                </button>
-              </form>
-            </div>
+              </div>
+
+              <div className="flex flex-col">
+                <label className="text-gray-600">Rating</label>
+                <Rating
+                  emptySymbol={<FaStar className="star-empty text-4xl" />}
+                  fullSymbol={
+                    <FaStar className="star-filled text-yellow-500 text-4xl" />
+                  }
+                  onChange={(value) => setRating(value)}
+                />
+              </div>
+
+              <button className="submitButton" type="submit">
+                Add Pin
+              </button>
+            </form>
           </Popup>
         )}
       </Map>

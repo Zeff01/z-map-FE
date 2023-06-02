@@ -41,19 +41,36 @@ export default function Register({ setShowRegister }) {
   };
 
   return (
-    <div className="register_container">
-      <div className="logo">
-        <ExitToAppIcon />
-        Create a profile
+    <div className="register_container bg-gray-100 rounded-lg p-4 shadow-md">
+      <div className="flex items-center mb-4">
+        <ExitToAppIcon className="mr-2 text-blue-500" />
+        <h2 className="text-xl font-bold">Create a profile</h2>
       </div>
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Username" ref={nameRef} />
-        <input type="email" placeholder="Email" ref={emailRef} />
-        <input type="password" placeholder="Password" ref={passRef} />
-        <button className="register_btn">Register</button>
+        <input
+          className="input_field mb-2 bg-white rounded px-4 py-2 border border-gray-300 focus:outline-none focus:border-blue-500"
+          type="text"
+          placeholder="Username"
+          ref={nameRef}
+        />
+        <input
+          className="input_field mb-2 bg-white rounded px-4 py-2 border border-gray-300 focus:outline-none focus:border-blue-500"
+          type="email"
+          placeholder="Email"
+          ref={emailRef}
+        />
+        <input
+          className="input_field mb-2 bg-white rounded px-4 py-2 border border-gray-300 focus:outline-none focus:border-blue-500"
+          type="password"
+          placeholder="Password"
+          ref={passRef}
+        />
+        <button className="register_btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+          Register
+        </button>
       </form>
       <CancelIcon
-        className="register_cancel"
+        className="register_cancel cursor-pointer text-gray-500 hover:text-gray-600"
         onClick={() => setShowRegister(false)}
       />
     </div>
