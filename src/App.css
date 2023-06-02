@@ -39,6 +39,8 @@ label {
 }
 .icon {
   cursor: pointer;
+  width: 20px;
+  height: 20px;
 }
 .place {
   font-size: 14px;

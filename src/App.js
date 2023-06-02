@@ -1,7 +1,6 @@
 import * as React from "react";
 import Map, { Marker } from "react-map-gl";
 import { Popup } from "react-map-gl";
-import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import { useState } from "react";
 import StarIcon from "@mui/icons-material/Star";
 import axios from "axios";
@@ -13,6 +12,8 @@ import { NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Register from "./Components/Register/Register";
 import Login from "./Components/Login/Login";
+import FmdGoodIcon from "@mui/icons-material/FmdGood";
+import { FiMapPin } from "react-icons/fi";
 
 const pinAddSuccess = () => {
   toast.success("Added pin!");
@@ -57,7 +58,7 @@ function App() {
     getPins();
   }, []);
 
-  const handleMarkerClicked = (id, lat, long) => {
+  const handleMarkerClicked = (id) => {
     setCurrentPlaceId(id);
   };
 
@@ -114,6 +115,7 @@ function App() {
     longitude: 121.07483,
     zoom: 1,
   };
+
   return (
     <div className="app">
       <Map
@@ -122,7 +124,7 @@ function App() {
         initialViewState={{
           latitude: 14.58351, // Replace with your desired latitude
           longitude: 121.07483, // Replace with your desired longitude
-          zoom: 5, // Replace with your desired zoom level
+          zoom: 2, // Replace with your desired zoom level
           bearing: 0, // Replace with your desired bearing (optional)
           pitch: 0, // Replace with your desired pitch (optional)
         }}
@@ -134,50 +136,54 @@ function App() {
         <ToastContainer position="top-left" theme="dark" />
         <NavigationControl />
         {pins &&
-          pins.map((p) => (
-            <div key={p._id}>
-              <Marker longitude={p.long} latitude={p.lat} anchor="center">
-                <FmdGoodIcon
-                  className="icon"
-                  onClick={() => handleMarkerClicked(p._id, p.lat, p.long)}
-                  style={{
-                    fontSize: viewPort.zoom * 2,
-                    color: p.userName === currentUser ? "tomato" : "slateblue",
-                  }}
-                />
-              </Marker>
+          pins.map((p) => {
+            console.log(p);
+            return (
+              <div key={p._id}>
+                <Marker longitude={p.long} latitude={p.lat} anchor="center">
+                  <FiMapPin
+                    className="icon"
+                    onClick={() => handleMarkerClicked(p._id, p.lat, p.long)}
+                    style={{
+                      fontSize: viewPort.zoom * 2,
+                      color:
+                        p.userName === currentUser ? "tomato" : "slateblue",
+                    }}
+                  />
+                </Marker>
 
-              {p._id === currentPlaceId && (
-                <Popup
-                  longitude={p.long}
-                  latitude={p.lat}
-                  closeOnClick={false}
-                  closeOnMove={false}
-                  onClose={() => setCurrentPlaceId(null)}
-                  anchor="left"
-                  className="popup"
-                >
-                  <div className="card">
-                    <label>Place</label>
-                    <h4 className="place">{p.title}</h4>
-                    <label>Review</label>
-                    <p className="descr">{p.descr}</p>
-                    <label>Rating</label>
-                    <div className="stars">
-                      {Array(p.rating).fill(<StarIcon className="star" />)}
+                {p._id === currentPlaceId && (
+                  <Popup
+                    longitude={p.long}
+                    latitude={p.lat}
+                    closeOnClick={false}
+                    closeOnMove={false}
+                    onClose={() => setCurrentPlaceId(null)}
+                    anchor="left"
+                    className="popup"
+                  >
+                    <div className="card">
+                      <label>Place</label>
+                      <h4 className="place">{p.title}</h4>
+                      <label>Review</label>
+                      <p className="descr">{p.description}</p>
+                      <label>Rating</label>
+                      <div className="stars">
+                        {Array(p.rating).fill(<StarIcon className="star" />)}
+                      </div>
+                      <label>Information</label>
+                      <div className="info">
+                        <span className="username">
+                          Created by <b>{p.userName}</b>
+                        </span>
+                        <span className="date">{format(p.createdAt)}</span>
+                      </div>
                     </div>
-                    <label>Information</label>
-                    <div className="info">
-                      <span className="username">
-                        Created by <b>{p.userName}</b>
-                      </span>
-                      <span className="date">{format(p.createdAt)}</span>
-                    </div>
-                  </div>
-                </Popup>
-              )}
-            </div>
-          ))}
+                  </Popup>
+                )}
+              </div>
+            );
+          })}
         {newPlace && (
           <Popup
             longitude={newPlace.lng}
