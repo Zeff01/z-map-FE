@@ -13,7 +13,7 @@ import ReactMapGL, { FlyToInterpolator, NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Register from "./Components/Register/Register";
 import Login from "./Components/Login/Login";
-import mapboxgl from "mapbox-gl";
+import mapboxgl from "!mapbox-gl";
 
 mapboxgl.workerClass =
   require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
